@@ -1,0 +1,6 @@
+{
+  "name": "RankUp Fitness",
+  "description": "Gamified home workout tracker with ranking system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
