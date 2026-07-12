@@ -36,6 +36,8 @@ export function Dashboard({ state, onToggleQuest, onStartChallenge, onGenerateSS
   const isEligibleForChallenge = isSSR ? false : daysInRank >= currentRankConfig.minDays;
   const todayStr = new Date().toISOString().split('T')[0];
 
+  const ageScale = getAgeScale(state.user?.age || 25);
+
 const todayCalories = dailyQuests
     .filter(q => q.completed)
     .reduce((sum, q) => {
@@ -67,7 +69,6 @@ const todayCalories = dailyQuests
       return sum + calculateCalories(q.id, state.user?.weight || 75, scaleStringNumbers(descToUse + " " + titleToUse, ageScale));
     }, 0);
 
-  const ageScale = getAgeScale(state.user?.age || 25);
   const scaleLocalized = (obj: any) => {
     if (!obj) return obj;
     return {

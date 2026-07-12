@@ -331,6 +331,7 @@ export const useStore = () => {
       const titleToUse = getTitleToUse();
       
       let newStats = { ...prev.stats };
+      const ageScale = getAgeScale(prev.user?.age || 25);
 
       if (!wasCompleted && isCompleted) {
         if (!newStats.activityHistory) {
@@ -356,7 +357,6 @@ export const useStore = () => {
           newStats.ssrChallengesCompleted.push(prev.progress.ssrChallengeId);
         }
         
-        const ageScale = getAgeScale(prev.user?.age || 25);
         const cals = calculateCalories(questId, prev.user?.weight || 75, scaleStringNumbers(descToUse + " " + titleToUse, ageScale));
         newStats.caloriesBurnedTotal = (newStats.caloriesBurnedTotal || 0) + cals;
       } else if (wasCompleted && !isCompleted) {
